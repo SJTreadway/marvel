@@ -9,7 +9,6 @@ mongoose.Promise = require('q').Promise;
 let app = express();
 const port = process.env.PORT || 8000;
 
-
 //----------Middleware------------//
 app.use(cors());
 app.use(bodyParser.json());

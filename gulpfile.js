@@ -2,6 +2,8 @@ const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
+const bower = require('gulp-bower');
+const wiredep = require('wiredep').stream;
 
 //////////////////
 // Copy package.json to build folder
@@ -9,6 +11,33 @@ const nodemon = require('gulp-nodemon');
 gulp.task('move', function() {
   gulp.src('src/public/scripts/**/*.*')
     .pipe(gulp.dest('./build/public/scripts'))
+});
+
+gulp.task('bower', function() {
+  gulp.src('./src/public/footer.html')
+    .pipe(wiredep({
+      optional: 'configuration',
+      goes: 'here'
+    }))
+    .pipe(gulp.dest('./build/public'))
+});
+
+gulp.task('index_page', function() {
+  gulp.src('./src/public/index.html')
+    .on('error', function(e) {
+      console.log('HTML ERROR >>>> ', e.message)
+      this.emit('end');
+    })
+    .pipe(gulp.dest('./build/public'));
+});
+
+gulp.task('styles', function() {
+  gulp.src('./src/public/styles.css')
+    .on('error', function(e) {
+      console.log('CSS ERROR >>>> ', e.message)
+      this.emit('end');
+    })
+    .pipe(gulp.dest('./build/public'));
 });
 
 gulp.task('babel', function() {
@@ -19,7 +48,7 @@ gulp.task('babel', function() {
       presets: ['es2015']
     }))
     .on('error', function(e) {
-      console.log("BABEL ERROR >>>> ", e.message)
+      console.log('BABEL ERROR >>>> ', e.message)
       this.emit('end')
     })
     .pipe(sourcemaps.write())
@@ -37,7 +66,7 @@ gulp.task('develop', function() {
   })
 });
 
-gulp.task('watch', ['babel', 'move'], function() {
+gulp.task('watch', ['babel', 'move', 'index_page', 'styles', 'bower'], function() {
   gulp.watch(['./src/**/*.js', '!src/public/scripts/**/*.js'], ['babel']);
 });
 
