@@ -2,8 +2,6 @@ const gulp = require('gulp');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const nodemon = require('gulp-nodemon');
-const bower = require('gulp-bower');
-const wiredep = require('wiredep').stream;
 
 //////////////////
 // Copy package.json to build folder
@@ -11,15 +9,6 @@ const wiredep = require('wiredep').stream;
 gulp.task('move', function() {
   gulp.src('src/public/scripts/**/*.*')
     .pipe(gulp.dest('./build/public/scripts'))
-});
-
-gulp.task('bower', function() {
-  gulp.src('./src/public/footer.html')
-    .pipe(wiredep({
-      optional: 'configuration',
-      goes: 'here'
-    }))
-    .pipe(gulp.dest('./build/public'))
 });
 
 gulp.task('index_page', function() {
@@ -66,7 +55,7 @@ gulp.task('develop', function() {
   })
 });
 
-gulp.task('watch', ['babel', 'move', 'index_page', 'styles', 'bower'], function() {
+gulp.task('watch', ['babel', 'move', 'index_page', 'styles'], function() {
   gulp.watch(['./src/**/*.js', '!src/public/scripts/**/*.js'], ['babel']);
 });
 

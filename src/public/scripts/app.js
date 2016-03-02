@@ -1,1 +1,1 @@
-angular.module('marvelApp', ['ui-router'])
+angular.module('marvelApp', ['ui.router']);
