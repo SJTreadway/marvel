@@ -56,6 +56,8 @@ gulp.task('develop', function() {
 });
 
 gulp.task('watch', ['babel', 'move', 'index_page', 'styles'], function() {
+  gulp.watch('./src/**/*.css', ['styles']);
+  gulp.watch('./src/**/*.html', ['index_page']);
   gulp.watch(['./src/**/*.js', '!src/public/scripts/**/*.js'], ['babel']);
 });
 
