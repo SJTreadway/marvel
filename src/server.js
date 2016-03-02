@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const key = require('./secret/key');
 
 mongoose.Promise = require('q').Promise;
 
