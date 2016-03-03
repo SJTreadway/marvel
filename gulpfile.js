@@ -10,7 +10,9 @@ gulp.task('move', function() {
   gulp.src('src/public/scripts/**/*.*')
     .pipe(gulp.dest('./build/public/scripts'));
   gulp.src('src/public/pagination/**/*.*')
-    .pipe(gulp.dest('./build/public/pagination'))
+    .pipe(gulp.dest('./build/public/pagination'));
+  gulp.src('src/public/**/*.jpeg')
+    .pipe(gulp.dest('./build/public'));
 });
 
 gulp.task('index_page', function() {

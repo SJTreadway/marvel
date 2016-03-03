@@ -1,18 +1,12 @@
 angular.module('marvelApp', ['ui.router', 'angularUtils.directives.dirPagination']).config(function($urlRouterProvider, $stateProvider) {
 
-  $urlRouterProvider.otherwise('/characters');
+  $urlRouterProvider.otherwise('/home');
 
   $stateProvider
-  // .state('/home', {
-  //   url: '/home',
-  //   templateUrl: '../views/home/homeTmpl.html',
-  //   controller: 'homeCtrl',
-  //   resolve: {
-  //     characters: function(mainService) {
-  //       return mainService.getAllChars();
-  //     }
-  //   }
-  // })
+  .state('/home', {
+    url: '/home',
+    templateUrl: '../views/home/homeTmpl.html'
+  })
   .state('/characters', {
     url: '/characters',
     templateUrl: '../views/characters/charactersTmpl.html',
