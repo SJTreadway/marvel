@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div dir-paginate="char in chars | itemsPerPage: pageSize" current-page="currentPage" class="col-md-3 chars">
+      <ul>
+        <li><img ng-src="{{char.thumbnail.path}}/portrait_xlarge.{{char.thumbnail.extension}}"/></li>
+        <br>
+        <li>{{char.name}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center">
+    <dir-pagination-controls></dir-pagination-controls>
+  </div>
+</div>

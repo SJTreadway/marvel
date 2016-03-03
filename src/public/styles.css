@@ -1,0 +1,41 @@
+body {
+  font-family: 'Orbitron', sans-serif;
+  color: blue;
+  background-color: lightgray;
+}
+a {
+  color: blue;
+}
+a:hover {
+  color: red;
+}
+li {
+  list-style: none;
+  font-size: 1.3em;
+  text-align: center;
+}
+.chars {
+  margin-bottom: 5%;
+}
+.comics {
+  margin-bottom: 10%;
+}
+.main-title {
+  font-weight: 900;
+  margin: 3% 0 5% 0;
+}
+.title {
+  font-size: 4em;
+  margin-bottom: 2%;
+}
+.link1 {
+  padding-right: 1%;
+  margin-right: 1%;
+  border-right: 3px solid blue;
+}
+.link1, .link2 {
+  font-size: 1.5em;
+}
+.footer {
+  margin-top: 5%;
+}

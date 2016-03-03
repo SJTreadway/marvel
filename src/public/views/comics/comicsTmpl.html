@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div dir-paginate="comic in comics | itemsPerPage: pageSize" current-page="currentPage" class="col-md-3 comics">
+      <ul>
+        <li><img ng-src="{{comic.thumbnail.path}}/portrait_xlarge.{{comic.thumbnail.extension}}"/></li>
+        <br>
+        <li>{{comic.title}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="text-center">
+    <dir-pagination-controls></dir-pagination-controls>
+  </div>
+</div>

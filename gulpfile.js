@@ -8,7 +8,9 @@ const nodemon = require('gulp-nodemon');
 /////////////////
 gulp.task('move', function() {
   gulp.src('src/public/scripts/**/*.*')
-    .pipe(gulp.dest('./build/public/scripts'))
+    .pipe(gulp.dest('./build/public/scripts'));
+  gulp.src('src/public/pagination/**/*.*')
+    .pipe(gulp.dest('./build/public/pagination'))
 });
 
 gulp.task('index_page', function() {
@@ -18,6 +20,11 @@ gulp.task('index_page', function() {
       this.emit('end');
     })
     .pipe(gulp.dest('./build/public'));
+});
+
+gulp.task('views', function() {
+  gulp.src('./src/public/views/**/*.html')
+    .pipe(gulp.dest('./build/public/views'))
 });
 
 gulp.task('styles', function() {
@@ -31,7 +38,7 @@ gulp.task('styles', function() {
 
 gulp.task('babel', function() {
   // add function to ignore the scripts after initial build
-  gulp.src(['src/**/*.js', '!src/public/scripts/**/*.js'])
+  gulp.src('src/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(babel({
       presets: ['es2015']
@@ -55,10 +62,10 @@ gulp.task('develop', function() {
   })
 });
 
-gulp.task('watch', ['babel', 'move', 'index_page', 'styles'], function() {
+gulp.task('watch', ['babel', 'move', 'index_page', 'styles', 'views'], function() {
   gulp.watch('./src/**/*.css', ['styles']);
-  gulp.watch('./src/**/*.html', ['index_page']);
-  gulp.watch(['./src/**/*.js', '!src/public/scripts/**/*.js'], ['babel']);
+  gulp.watch('./src/**/*.html', ['index_page', 'views']);
+  gulp.watch('./src/**/*.js', ['babel']);
 });
 
 gulp.task('default', ['develop', 'watch']);
