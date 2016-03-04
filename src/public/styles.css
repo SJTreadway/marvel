@@ -9,6 +9,18 @@ a {
 a:hover {
   color: red;
 }
+a:visited {
+  color: white;
+}
+input {
+  color: steelblue;
+  margin-right: 0.5%;
+  font-size: 1.4em;
+  margin-bottom: 3%;
+}
+.btn {
+  margin-bottom: 0.3%;
+}
 li {
   list-style: none;
   font-size: 1.3em;

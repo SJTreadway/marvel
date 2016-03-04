@@ -20,8 +20,7 @@ app.listen(port, function() {
 });
 
 //----------Get Characters------------//
-app.get('/api/characters', CharacterCtrl.getAllChars);
-app.get('/api/characters/:id', CharacterCtrl.getOneChar);
+app.get('/api/characters', CharacterCtrl.getChars);
 
 //----------Get Comics------------//
 app.get('/api/comics', ComicCtrl.getAllComics);

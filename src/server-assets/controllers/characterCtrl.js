@@ -6,14 +6,16 @@ let n = Math.random();
 let hash = md5(n + key.private + key.public);
 
 module.exports = {
-  getAllChars: function(req,res) {
-    request.get('http://gateway.marvel.com:80/v1/public/characters?limit=84&ts=' + n + '&apikey=' + key.public + '&hash=' + hash, function(err, response, body) {
-      return res.send(body);
-    });
-  },
-  getOneChar: function(req, res) {
-    request.get('http://gateway.marvel.com:80/v1/public/characters/' + req.params.id + '?ts=' + n + '&apikey=' + key.public + '&hash=' + hash, function(err, response, body) {
+  getChars: function(req,res) {
+    let query = '';
+    if (req.query.name) {
+      query = '?name=' + req.query.name + '&';
+    } else {
+      query = '?limit=64&';
+    }
+    request.get('http://gateway.marvel.com:80/v1/public/characters' + query + 'ts=' + n + '&apikey=' + key.public + '&hash=' + hash, function(err, response, body) {
       return res.send(body);
     });
   }
+
 };

@@ -1,6 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <div dir-paginate="char in chars | itemsPerPage: pageSize" current-page="currentPage" class="col-md-3 chars">
+    <div class="text-center">
+      <form>
+        <input type="text" ng-model="name">
+        <button ng-click="getOneChar()" class="btn btn-primary">Search</button>
+      </form>
+    </div>
+    <div dir-paginate="char in character | itemsPerPage: pageSize" current-page="currentPage" class="col-md-3 chars">
       <ul>
         <li><img ng-src="{{char.thumbnail.path}}/portrait_xlarge.{{char.thumbnail.extension}}"/></li>
         <br>
